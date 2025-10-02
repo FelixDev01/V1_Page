@@ -1,4 +1,7 @@
 package page.api.dto;
 
-public record ProdutoRequestDTO() {
+public record ProdutoRequestDTO(String nome,
+                                String descricao,
+                                Double preco,
+                                String imageUrl) {
 }
