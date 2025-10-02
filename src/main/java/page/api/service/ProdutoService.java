@@ -1,10 +1,14 @@
 package page.api.service;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import page.api.dto.ProdutoRequestDTO;
 import page.api.dto.ProdutoResponseDTO;
 import page.api.model.Produto;
 import page.api.repository.ProdutoRepository;
+
+import java.util.List;
 
 @Service
 public class ProdutoService {
@@ -27,6 +31,8 @@ public class ProdutoService {
         return new ProdutoResponseDTO(salvo);
     }
 
-
-
+    /// GET
+    public Page<ProdutoResponseDTO> listar(Pageable pageable){
+        return repository.findAll(pageable).map(ProdutoResponseDTO::new);
+    }
 }
